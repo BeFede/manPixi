@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Hello World</title>
+  <script src="lib/pixi.min.js"></script>
+  <script type="text/javascript" src="lib/JQuery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-5 div-pixi">
+        <div id="div-pixi" class="div-pixi" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      </div>
+      <div class="col-xs-3 botonera">
+        <div class="row">
+          <div class="row">
+            <button class="btn btn-default col-xs-12" type="button" id="btn-escalar">Escalar</button>
+            <button class="btn btn-default col-xs-12" type="button" id="btn-rotar">Rotar</button>
+            <button class="btn btn-info col-xs-12" type="button" id="btn-mover">Mover</button>
+          </div>
+          <div class="row">
+            <button class="btn btn-default col-xs-6 dinamico" type="button" id="btn-disminuir">Disminuir</button>
+            <button class="btn btn-default col-xs-6 dinamico" type="button" id="btn-aumentar">Aumentar</button>
+          </div>
+          <div class="row">
+            <div id="contenedor-imagenes">
+            </div>
+
+            <div class="input-group form-horizontal">
+              <form id="form-imagenes" enctype="multipart/form-data">
+                <input type="file" multiple class="form-control" name="files" id="input-cargar-imagen" value="Cargar imagen">
+                <input type="button" class="form-control" name="" id="btn-cargar-imagen" value="Cargar imagen">
+              </form>
+
+            </div>
+            <img id="img-prueba" src="" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+/*
+    $('#btn-cargar-imagen').click(function () {
+        var cadena = $("#form-imagenes").serializeArray();
+
+        $.ajax({
+          url: "gestor_imagenes.php",
+          type: 'POST',
+          data: cadena,
+          success: function(json){
+            var data = $.parseJSON(json);
+            console.log(data);
+            //console.log(json[0].img);
+            $('#input-cargar-imagen').val("");
+          },
+          error: function(xhr, status){
+            console.log(xhr);
+            console.log(status);
+          }
+        });
+
+
+    });
+*/
+$('#btn-cargar-imagen').click(function () {
+   if ($('#input-cargar-imagen').val() != ""){
+       var archivos = document.getElementById('input-cargar-imagen').files;
+       var archivo, fileName, reader;
+//          for (var i = 0; i < archivos.length; i++){
+           reader = new FileReader();
+           archivo = archivos[0];
+           fileName = archivo.name;
+           reader.readAsDataURL(archivo);
+           reader.onload = function(){
+             agregarImagenAlContenedor(fileName, reader.result);
+           }
+           $('#input-cargar-imagen').val("");
+         }
+
+       });
+  </script>
+
+  <script src="clases/Controlador.js"></script>
+  <script src="clases/ElementoGrafico.js"></script>
+  <script src="clases/eventos/Arrastre.js"></script>
+  <script src="clases/herramientas/Herramienta.js"></script>
+  <script src="clases/herramientas/Mover.js"></script>
+  <script src="clases/herramientas/Escalar.js"></script>
+  <script src="clases/herramientas/Rotar.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

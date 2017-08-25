@@ -1,0 +1,40 @@
+.div-pixi{
+  margin-left: 0%;
+  margin-top: 0%;
+  padding-left: 0%;
+}
+
+body{
+  background-color: rgb(191,191,255);
+}
+
+.botonera{
+  margin-top: 2%;
+}
+
+.botonera .btn {
+
+}
+
+.botonera .dinamico {
+  margin-top: 15%;
+  margin-bottom: 10%;
+}
+
+#contenedor-imagenes{
+  border: 1px solid white;
+  height: 200px;
+  margin-bottom: 3%;
+}
+
+
+.filaContenedorImagen{
+  text-align: center;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  margin-top: 3%;
+  margin-left: 2%;
+  margin-right: 2%;
+  border-radius: 5px;
+  background-color: rgb(191,255, 191)
+}
